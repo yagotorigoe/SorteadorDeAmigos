@@ -1,0 +1,43 @@
+/* Isso vai centralizar tudo na tela e mudar a cor de fundo */
+body {
+    background-color: hsl(240, 10%, 92%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Isso vai deixar o título mais bonito */
+h1 {
+    color: #333333;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Isso transforma o botão padrão em um botão moderno */
+button {
+    background-color: #6c63ff; /* Cor roxa moderninha */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px; /* Arredonda as bordas */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Dá uma sombrinha */
+    transition: background-color 0.3s; /* Deixa a mudança de cor suave */
+}
+
+/* Isso muda a cor do botão quando você passa o mouse por cima */
+button:hover {
+    background-color: #5750d1;
+}
+
+/* Isso estiliza o nome sorteado */
+h2 {
+    color: #ff6b6b; /* Cor de destaque (um tom de vermelho/coral) */
+    font-size: 2rem;
+    margin-top: 30px;
+}
