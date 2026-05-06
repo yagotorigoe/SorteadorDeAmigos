@@ -8,8 +8,15 @@
 </head>
 <body>
     <h1>Sorteador</h1>
-    <button id="btn-sortear" onclick="sortear()">Sortear</button>
+
+    <div class="grupo-adicionar">
+    <input type="text" id="nome-amigo" placeholder="Digite o nome de um amigo">
+    <button onclick="adicionar()">Adicionar</button>
+</div>
+
+<button id="btn-sortear" onclick="sortear()">Sortear</button>
     <h2 id="resultado"></h2>
+
     <script src="app.js"></script>
 </body>
 </html>

@@ -41,3 +41,24 @@ h2 {
     font-size: 2rem;
     margin-top: 30px;
 }
+
+.grupo-adicionar {
+    display: flex;
+    gap: 10px; /* Cria um espaço de 10px entre o input e o botão */
+    margin-bottom: 40px; /* Empurra o botão "Sortear" para baixo, substituindo o antigo <br><br> */
+}
+
+/* Deixa o campo de texto moderno e do mesmo tamanho do botão */
+input {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #cccccc; /* Borda cinza clara */
+    border-radius: 8px; /* Arredonda igual aos botões */
+    outline: none; /* Remove aquela linha preta padrão do navegador quando clicamos no campo */
+    transition: border-color 0.3s; /* Deixa a mudança de cor suave */
+}
+
+/* Muda a cor da borda quando o usuário clica dentro do campo de texto */
+input:focus {
+    border-color: #6c63ff; /* Fica roxo combinando com o botão */
+}
