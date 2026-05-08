@@ -12,6 +12,20 @@ function adicionar () {
    amigos.push(nome);
 
    input.value = "";
+   
+   atualizarLista();
+} 
+
+function atualizarLista() {
+    let lista = document.getElementById("lista-amigos");
+    
+    lista.innerHTML = ""; 
+
+    for (let i = 0; i < amigos.length; i++) {
+        let item = document.createElement("li");
+        item.innerHTML = amigos[i];
+        lista.appendChild(item);
+    }
 }
 
 function sortear() {
