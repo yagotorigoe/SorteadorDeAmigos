@@ -1,20 +1,26 @@
 let amigos = [];
 
-function adicionar () {
-   let input = document.getElementById("nome-amigo");
-   let nome = input.value
+function adicionar() {
+    let input = document.getElementById("nome-amigo");
+    let nome = input.value;
 
-   if (nome === "") {
+    if (nome === "") {
       alert("Por favor, digite um nome!");
-      return
-   }
+      return;
+    }
 
-   amigos.push(nome);
+    let nomeMaiusculo = nome.toUpperCase();
+    let listaMaiuscula = amigos.map(amigo => amigo.toUpperCase());
 
-   input.value = "";
-   
-   atualizarLista();
-} 
+    if (listaMaiuscula.includes(nomeMaiusculo)) {
+      alert("Este nome já foi adicionado!");
+      return;
+    }
+
+    amigos.push(nome);
+    input.value = ""; 
+    atualizarLista(); 
+}
 
 function atualizarLista() {
     let lista = document.getElementById("lista-amigos");
@@ -39,4 +45,21 @@ function sortear() {
 
    let resultado = document.getElementById("resultado");
    resultado.innerHTML = "Sorteado: " + nomeSorteado;
+}
+
+let campoTexto = document.getElementById("nome-amigo");
+
+campoTexto.addEventListener("keypress", function(evento) {
+    if (evento.key === "Enter") {
+        adicionar();
+    }
+});
+
+function novoSorteio() {
+    amigos = [];
+    
+    atualizarLista();
+
+    document.getElementById("resultado").innerHTML = "";
+    document.getElementById("nome-amigo").focus();
 }

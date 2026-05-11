@@ -1,4 +1,3 @@
-/* Isso vai centralizar tudo na tela e mudar a cor de fundo */
 body {
     background-color: hsl(240, 10%, 92%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,57 +9,52 @@ body {
     margin: 0;
 }
 
-/* Isso vai deixar o título mais bonito */
 h1 {
     color: #333333;
     font-size: 3rem;
     margin-bottom: 20px;
 }
 
-/* Isso transforma o botão padrão em um botão moderno */
 button {
-    background-color: #6c63ff; /* Cor roxa moderninha */
+    background-color: #6c63ff;
     color: white;
     border: none;
     padding: 15px 30px;
     font-size: 1.2rem;
-    border-radius: 8px; /* Arredonda as bordas */
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Dá uma sombrinha */
-    transition: background-color 0.3s; /* Deixa a mudança de cor suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
 }
 
-/* Isso muda a cor do botão quando você passa o mouse por cima */
 button:hover {
     background-color: #5750d1;
 }
 
-/* Isso estiliza o nome sorteado */
+
 h2 {
-    color: #ff6b6b; /* Cor de destaque (um tom de vermelho/coral) */
+    color: #ff6b6b;
     font-size: 2rem;
     margin-top: 30px;
 }
 
 .grupo-adicionar {
     display: flex;
-    gap: 10px; /* Cria um espaço de 10px entre o input e o botão */
-    margin-bottom: 40px; /* Empurra o botão "Sortear" para baixo, substituindo o antigo <br><br> */
+    gap: 10px;
+    margin-bottom: 40px;
 }
 
-/* Deixa o campo de texto moderno e do mesmo tamanho do botão */
 input {
     padding: 15px 20px;
     font-size: 1.2rem;
-    border: 2px solid #cccccc; /* Borda cinza clara */
-    border-radius: 8px; /* Arredonda igual aos botões */
-    outline: none; /* Remove aquela linha preta padrão do navegador quando clicamos no campo */
-    transition: border-color 0.3s; /* Deixa a mudança de cor suave */
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-/* Muda a cor da borda quando o usuário clica dentro do campo de texto */
 input:focus {
-    border-color: #6c63ff; /* Fica roxo combinando com o botão */
+    border-color: #6c63ff;
 }
 
 ul {
@@ -73,4 +67,18 @@ ul {
 
 li {
     margin-bottom: 5px; 
+}
+
+.grupo-botoes {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+#btn-limpar {
+    background-color: #e68080;
+    color: white;
+}
+#btn-limpar:hover {
+    background-color: #fa5252;
 }
