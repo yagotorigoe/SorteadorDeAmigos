@@ -20,8 +20,14 @@
     <button id="btn-sortear" onclick="sortear()">Sortear</button>
     <button id="btn-limpar" onclick="novoSorteio()">Novo Sorteio</button>
 </div>
-    
-    <h2 id="resultado"></h2>
+
+<div id="modal-sorteio" class="modal-oculta">
+        <div class="modal-cartao">
+            <h2>🎉 O Vencedor é 🎉</h2>
+            <p id="texto-vencedor"></p>
+            <button onclick="fecharModal()" class="btn-fechar-modal">Fechar</button>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

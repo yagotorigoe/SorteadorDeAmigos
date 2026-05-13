@@ -104,6 +104,55 @@ li {
     background-color: #e68080;
     color: white;
 }
+
 #btn-limpar:hover {
     background-color: #fa5252;
+}
+
+.modal-oculta {
+    display: none;
+}
+
+.modal-visivel {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-cartao {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: pularNaTela 0.4s ease-out; 
+}
+
+#texto-vencedor {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin: 20px 0;
+}
+
+.btn-fechar-modal {
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@keyframes pularNaTela {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }

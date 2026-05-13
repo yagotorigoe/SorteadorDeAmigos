@@ -68,11 +68,15 @@ function sortear() {
     }, 100);
 
     setTimeout(() => {
-        clearInterval(roleta);
+        clearInterval(roleta); 
         
         let vencedorFinal = Math.floor(Math.random() * amigos.length);
-        resultado.innerHTML = "Sorteado: " + amigos[vencedorFinal];
-        resultado.style.color = "#ff6b6b";
+        let modal = document.getElementById("modal-sorteio");
+        let textoVencedor = document.getElementById("texto-vencedor");
+        
+        textoVencedor.innerHTML = amigos[vencedorFinal];
+        modal.className = "modal-visivel";
+        
     }, tempoSorteio);
 }
 
@@ -80,7 +84,6 @@ function novoSorteio() {
     amigos = [];
     salvarDados();
     atualizarLista();
-    document.getElementById("resultado").innerHTML = "";
     document.getElementById("nome-amigo").focus();
 }
 
@@ -90,3 +93,8 @@ campoTexto.addEventListener("keypress", function(evento) {
         adicionar();
     }
 });
+
+function fecharModal() {
+    let modal = document.getElementById("modal-sorteio");
+    modal.className = "modal-oculta";
+}
