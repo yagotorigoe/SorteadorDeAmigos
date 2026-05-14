@@ -156,3 +156,20 @@ li {
     0% { transform: scale(0.5); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
+
+#btn-gerar {
+    background-color: #20c997;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    width: 300px;
+    transition: background-color 0.3s;
+}
+
+#btn-gerar:hover {
+    background-color: #12b886;
+}

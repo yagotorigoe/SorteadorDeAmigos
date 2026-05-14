@@ -98,3 +98,33 @@ function fecharModal() {
     let modal = document.getElementById("modal-sorteio");
     modal.className = "modal-oculta";
 }
+
+async function gerarNomes() {
+    try {
+        let botao = document.getElementById("btn-gerar");
+        botao.innerHTML = "Buscando nomes na internet...";
+
+        let resposta = await fetch("https://randomuser.me/api/?nat=br&results=5&inc=name");
+
+        let dados = await resposta.json();
+
+        let pessoas = dados.results;
+        
+        for(let i = 0; i < pessoas.length; i++) {
+            let nomeGerado = pessoas[i].name.first; 
+            
+            if (!amigos.includes(nomeGerado)) {
+                amigos.push(nomeGerado);
+            }
+        }
+
+        salvarDados();
+        atualizarLista();
+        
+        botao.innerHTML = "+ Gerar Nomes Aleatórios";
+
+    } catch (erro) {
+        alert("Opa! O servidor tropeçou. Verifique sua internet e tente de novo.");
+        document.getElementById("btn-gerar").innerHTML = "+ Gerar Nomes Aleatórios";
+    }
+}
