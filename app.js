@@ -98,3 +98,24 @@ function fecharModal() {
     let modal = document.getElementById("modal-sorteio");
     modal.className = "modal-oculta";
 }
+
+function compartilharWhatsApp() {
+    let vencedor = document.getElementById("texto-vencedor").innerHTML;
+    let mensagem = `🎉 O grande vencedor do sorteio foi: *${vencedor}*! 🏆`;
+    let linkZap = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(linkZap, '_blank');
+}
+
+function alternarTema() {
+    document.body.classList.toggle("tema-escuro");
+
+    let botao = document.getElementById("btn-tema")
+
+    if (document.body.classList.contains("tema-escuro")) {
+        botao.innerHTML = '<i class="fas fa-sun"></i> Modo Claro';
+    } else {
+        botao.innerHTML = '<i class="fas fa-moon"></i> Modo Escuro';
+    }
+}
+   
