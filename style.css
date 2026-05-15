@@ -157,7 +157,6 @@ li {
     100% { transform: scale(1); opacity: 1; }
 }
 
-<<<<<<< HEAD
 .btn-whatsapp {
     background-color: #25D366;
     color: white;
@@ -206,7 +205,8 @@ body.tema-escuro h1 {
 button i {
     margin-right: 8px;
     font-size: 1.1rem;
-=======
+}
+
 #btn-gerar {
     background-color: #20c997;
     color: white;
@@ -222,5 +222,5 @@ button i {
 
 #btn-gerar:hover {
     background-color: #12b886;
->>>>>>> f4c4f93d33d8476752b42a9d55f02b9b6e2a9f3d
+
 }

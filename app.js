@@ -99,7 +99,6 @@ function fecharModal() {
     modal.className = "modal-oculta";
 }
 
-<<<<<<< HEAD
 function compartilharWhatsApp() {
     let vencedor = document.getElementById("texto-vencedor").innerHTML;
     let mensagem = `🎉 O grande vencedor do sorteio foi: *${vencedor}*! 🏆`;
@@ -120,7 +119,6 @@ function alternarTema() {
     }
 }
    
-=======
 async function gerarNomes() {
     try {
         let botao = document.getElementById("btn-gerar");
@@ -150,4 +148,3 @@ async function gerarNomes() {
         document.getElementById("btn-gerar").innerHTML = "+ Gerar Nomes Aleatórios";
     }
 }
->>>>>>> f4c4f93d33d8476752b42a9d55f02b9b6e2a9f3d
