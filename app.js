@@ -77,6 +77,14 @@ function sortear() {
         textoVencedor.innerHTML = amigos[vencedorFinal];
         modal.className = "modal-visivel";
         
+        modal.className = "modal-visivel";
+        
+        confetti({
+            particleCount: 150,
+            spread: 150,
+            origin: { y: 0.6 }
+        });
+
     }, tempoSorteio);
 }
 
