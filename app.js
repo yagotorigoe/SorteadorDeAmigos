@@ -1,5 +1,11 @@
 let amigos = JSON.parse(localStorage.getItem("meusAmigos")) || [];
 
+let somTambores = new Audio("https://www.myinstants.com/media/sounds/drum-roll.mp3");
+let somVitoria = new Audio("https://www.myinstants.com/media/sounds/kids_cheering.mp3");
+
+somTambores.volume = 0.095;
+somVitoria.volume = 0.1;
+
 atualizarLista();
 
 function salvarDados() {
@@ -58,34 +64,26 @@ function sortear() {
         return;
     }
 
-    let resultado = document.getElementById("resultado");
-    let tempoSorteio = 3000; //
-
-    let roleta = setInterval(() => {
-        let numeroAleatorio = Math.floor(Math.random() * amigos.length);
-        resultado.innerHTML = "Sorteando: " + amigos[numeroAleatorio];
-        resultado.style.color = "#888"; 
-    }, 100);
+    somTambores.play();
 
     setTimeout(() => {
-        clearInterval(roleta); 
         
-        let vencedorFinal = Math.floor(Math.random() * amigos.length);
+        let numeroSorteado = Math.floor(Math.random() * amigos.length);
+        let vencedor = amigos[numeroSorteado];
+
+        document.getElementById("texto-vencedor").innerText = vencedor;
+
         let modal = document.getElementById("modal-sorteio");
-        let textoVencedor = document.getElementById("texto-vencedor");
-        
-        textoVencedor.innerHTML = amigos[vencedorFinal];
         modal.className = "modal-visivel";
-        
-        modal.className = "modal-visivel";
-        
+
+        somVitoria.play();
         confetti({
             particleCount: 150,
-            spread: 150,
+            spread: 90,
             origin: { y: 0.6 }
         });
 
-    }, tempoSorteio);
+    }, 2500);
 }
 
 function novoSorteio() {
