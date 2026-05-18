@@ -8,6 +8,7 @@ somTambores.volume = 0.095;
 somVitoria.volume = 0.1;
 
 atualizarLista();
+atualizarHistorico();
 
 function salvarDados() {
     localStorage.setItem("meusAmigos", JSON.stringify(amigos));
@@ -15,10 +16,11 @@ function salvarDados() {
 
 function adicionar() {
     let input = document.getElementById("nome-amigo");
-    let nome = input.value;
+    let nome = input.value.trim;
 
-    if (nome === "") {
-        alert("Por favor, digite um nome!");
+    if (nome.length === 0) {
+        alert("Por favor, digite um nome válido!");
+        input.value = "";
         return;
     }
 
@@ -67,19 +69,27 @@ function sortear() {
 
     somTambores.play();
 
+    let modal = document.getElementById("modal-sorteio");
+    modal.className = "modal-visivel";
+    let textoVencedor = document.getElementById("texto-vencedor");
+
+    let roleta = setInterval(() => {
+        let nomeAleatorio = amigos[Math.floor(Math.random() * amigos.length)];
+        textoVencedor.innerText = nomeAleatorio;
+    }, 100);
+
     setTimeout(() => {
         
+        clearInterval(roleta); 
+
         let numeroSorteado = Math.floor(Math.random() * amigos.length);
         let vencedor = amigos[numeroSorteado];
+
+        textoVencedor.innerText = vencedor;
 
         historico.push(vencedor);
         localStorage.setItem("meusCampeoes", JSON.stringify(historico));
         atualizarHistorico();
-
-        document.getElementById("texto-vencedor").innerText = vencedor;
-
-        let modal = document.getElementById("modal-sorteio");
-        modal.className = "modal-visivel";
 
         somVitoria.play();
         confetti({
