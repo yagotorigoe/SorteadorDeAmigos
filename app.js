@@ -1,4 +1,5 @@
 let amigos = JSON.parse(localStorage.getItem("meusAmigos")) || [];
+let historico = JSON.parse(localStorage.getItem("meusCampeoes")) || [];
 
 let somTambores = new Audio("https://www.myinstants.com/media/sounds/drum-roll.mp3");
 let somVitoria = new Audio("https://www.myinstants.com/media/sounds/kids_cheering.mp3");
@@ -71,6 +72,10 @@ function sortear() {
         let numeroSorteado = Math.floor(Math.random() * amigos.length);
         let vencedor = amigos[numeroSorteado];
 
+        historico.push(vencedor);
+        localStorage.setItem("meusCampeoes", JSON.stringify(historico));
+        atualizarHistorico();
+
         document.getElementById("texto-vencedor").innerText = vencedor;
 
         let modal = document.getElementById("modal-sorteio");
@@ -91,6 +96,23 @@ function novoSorteio() {
     salvarDados();
     atualizarLista();
     document.getElementById("nome-amigo").focus();
+}
+
+function atualizarHistorico() {
+    let listaHTML = document.getElementById("lista-historico");
+    listaHTML.innerHTML = "";
+
+    historico.map(campeao => {
+        let item = document.createElement("li");
+        item.innerText = campeao;
+        listaHTML.appendChild(item);
+    });
+}
+
+function limparHistorico() {
+    historico = [];
+    localStorage.removeItem("meusCampeoes");
+    atualizarHistorico();
 }
 
 let campoTexto = document.getElementById("nome-amigo");
