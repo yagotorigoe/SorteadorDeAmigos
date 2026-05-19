@@ -16,7 +16,7 @@ function salvarDados() {
 
 function adicionar() {
     let input = document.getElementById("nome-amigo");
-    let nome = input.value.trim;
+    let nome = input.value.trim();
 
     if (nome.length === 0) {
         alert("Por favor, digite um nome válido!");

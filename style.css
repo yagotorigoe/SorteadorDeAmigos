@@ -234,3 +234,61 @@ button i {
     background-color: #12b886;
 
 }
+
+@media (max-width: 768px) {
+    
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 25px 20px;
+        box-sizing: border-box;
+    }
+
+    /* O botão de Modo Escuro volta a aparecer, centralizado e num tamanho normal */
+    #btn-tema {
+        position: static; 
+        display: block;
+        margin: 0 auto 20px auto;
+        width: auto; 
+        padding: 10px 20px;
+    }
+
+    .grupo-adicionar {
+        flex-direction: column; 
+    }
+
+    /* Os botões ficam em 100% da caixa, mas a caixa agora tem bordas, então fica elegante */
+    .grupo-adicionar input, 
+    .grupo-adicionar button, 
+    #btn-gerar, 
+    .grupo-botoes button,
+    .grupo-historico button {
+        width: 100%;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+    }
+
+    .grupo-botoes {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* O botão X de apagar continua pequeno */
+    ul li {
+        padding: 12px 15px;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul li button {
+        width: auto;
+        padding: 6px 12px;
+        margin-bottom: 0;
+    }
+
+    #texto-vencedor {
+        font-size: 2.2rem; 
+    }
+}
