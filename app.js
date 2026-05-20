@@ -69,23 +69,24 @@ function sortear() {
 
     somTambores.play();
 
+    document.getElementById("titulo-modal").innerHTML = '<i class="fas fa-trophy"></i> O Vencedor é <i class="fas fa-trophy"></i>';
+
     let modal = document.getElementById("modal-sorteio");
     modal.className = "modal-visivel";
     let textoVencedor = document.getElementById("texto-vencedor");
 
     let roleta = setInterval(() => {
         let nomeAleatorio = amigos[Math.floor(Math.random() * amigos.length)];
-        textoVencedor.innerText = nomeAleatorio;
+        textoVencedor.innerHTML = nomeAleatorio;
     }, 100);
 
     setTimeout(() => {
-        
         clearInterval(roleta); 
 
         let numeroSorteado = Math.floor(Math.random() * amigos.length);
         let vencedor = amigos[numeroSorteado];
 
-        textoVencedor.innerText = vencedor;
+        textoVencedor.innerHTML = vencedor;
 
         historico.push(vencedor);
         localStorage.setItem("meusCampeoes", JSON.stringify(historico));
@@ -185,4 +186,36 @@ async function gerarNomes() {
         alert("Opa! O servidor tropeçou. Verifique sua internet e tente de novo.");
         document.getElementById("btn-gerar").innerHTML = "+ Gerar Nomes Aleatórios";
     }
+}
+
+function sortearAmigoSecreto() {
+    if (amigos.length < 3) {
+        alert("Você precisa de pelo menos 3 amigos para realizar um Amigo Secreto!");
+        return;
+    }
+
+    let amigosEmbaralhados = [...amigos];
+
+    for (let i = amigosEmbaralhados.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [amigosEmbaralhados[i], amigosEmbaralhados[j]] = [amigosEmbaralhados[j], amigosEmbaralhados[i]];
+    }
+
+    document.getElementById("titulo-modal").innerHTML = '🎁 Pares do Amigo Secreto 🎁';
+
+    let resultadoHTML = "<div class='lista-amigo-secreto'>";
+    
+    for (let i = 0; i < amigosEmbaralhados.length; i++) {
+        let amigoAtual = amigosEmbaralhados[i];
+        let proximoAmigo = amigosEmbaralhados[(i + 1) % amigosEmbaralhados.length]; 
+        
+        resultadoHTML += `<p><strong>${amigoAtual}</strong> ➔ tirou <strong>${proximoAmigo}</strong></p>`;
+    }
+    resultadoHTML += "</div>";
+
+    let textoVencedor = document.getElementById('texto-vencedor');
+    textoVencedor.innerHTML = resultadoHTML;
+    
+    let modal = document.getElementById('modal-sorteio');
+    modal.className = 'modal-visivel';
 }
