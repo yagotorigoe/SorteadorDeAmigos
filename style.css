@@ -6,17 +6,16 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Centraliza a caixa principal no body */
+    align-items: center;
     justify-content: center;
     min-height: 100vh;
     margin: 0;
 }
 
-/* O container principal que engloba todo o conteúdo */
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* ISSO AQUI força tudo a ficar no centro (PC e Celular) */
+    align-items: center; 
     width: 100%;
     max-width: 800px;
     padding: 20px;
@@ -42,7 +41,7 @@ h2 {
    ========================================= */
 .grupo-adicionar {
     display: flex;
-    justify-content: center; /* Centraliza input e botão */
+    justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
     width: 100%;
@@ -55,7 +54,7 @@ input {
     border-radius: 8px;
     outline: none;
     transition: border-color 0.3s;
-    width: 300px; /* Largura fixa para PC */
+    width: 300px; 
     max-width: 100%;
 }
 
@@ -270,4 +269,42 @@ body.tema-escuro h1 {
 
 .btn-whatsapp:hover {
     background-color: #128c7e !important;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+li {
+    animation: entradaSuave 0.4s ease-out;
+}
+
+@keyframes entradaSuave {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+body:has(.modal-visivel) .container {
+    filter: blur(8px);
+    transition: filter 0.3s ease;
+}
+
+.modal-cartao {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+body.tema-escuro .modal-cartao {
+    background-color: rgba(45, 45, 45, 0.95) !important;
+}
+
+.transicao-suave {
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
