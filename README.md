@@ -44,4 +44,4 @@ Não precisas de instalar nada! Para ver o projeto a funcionar no teu computador
 
 1. Faz o clone deste repositório:
    ```bash
-   git clone [(https://github.com/yagotorigoe/SorteadorDeAmigos.git)]
+   git clone [(https://github.com/yagotorigoe/SuperSorteador.git)]
