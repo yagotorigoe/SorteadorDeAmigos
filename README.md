@@ -1,4 +1,4 @@
-# 🎉 Sorteador de Amigos 
+# 🎉 Super Sorteador
 ![Demonstração do Site](./screenshot.png)
 
 Este é um projeto de um **Sorteador de Amigos** dinâmico e interativo, desenvolvido para colocar em prática conceitos fundamentais e avançados de Desenvolvimento Web Front-End. O aplicativo foi transformado de uma lista simples para uma experiência imersiva de "programa de TV", com efeitos sonoros, suspenses visuais e animações.
