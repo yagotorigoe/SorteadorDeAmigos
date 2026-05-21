@@ -3,59 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sorteador Profissional</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="transicao-suave"></body>
-<main class="container">
+<body class="transicao-suave">
 
-    <button id="btn-tema" onclick="alternarTema()">
-        <i class="fas fa-moon"></i> Modo Escuro
-    </button>
-
-    <h1>Sorteador</h1>
-
-<div class="grupo-adicionar">
-    <input type="text" id="nome-amigo" placeholder="Digite o nome de um amigo">
-    <button onclick="adicionar()">Adicionar</button>
-</div>
-
-<button id="btn-gerar" onclick="gerarNomes()">+ Gerar Nomes Aleatórios</button>
-
-<ul id="lista-amigos"></ul>
-
-<div class="grupo-botoes">
-    <button id="btn-sortear" onclick="sortear()">Sortear</button>
-    <button id="btn-amigo-secreto" onclick="sortearAmigoSecreto()"> Amigo Secreto</button>
-    <button id="btn-limpar" onclick="novoSorteio()">Novo Sorteio</button>
-</div>
-
-<div class="grupo-historico">
-    <h2 class="titulo-historico">
-    <i class="fa-solid fa-trophy"></i> Hall da Fama
-    </h2>
-    <ul id="lista-historico"></ul>
-    <button onclick="limparHistorico()">Zerar Histórico</button>
-</div>
-</main>
-<div id="modal-sorteio" class="modal-oculta">
-    <div class="modal-cartao">
-        <h2 id="titulo-modal"><i class="fas fa-trophy"></i> O Vencedor é <i class="fas fa-trophy"></i></h2>
+<header class="cabecalho">
+        <div class="logo">🎉 Super Sorteador</div>
         
-        <div id="texto-vencedor"></div>
+        <nav class="menu-superior">
+            <button id="nav-home" class="ativo" onclick="mudarAba('home')">Início</button>
+            <button id="nav-sorteador" onclick="mudarAba('sorteador')">Sorteador</button>
+            <button id="nav-amigo-secreto" onclick="mudarAba('amigo-secreto')">Amigo Secreto</button>
+            <button id="nav-equipes" onclick="mudarAba('equipes')">Equipes</button>
+        </nav>
 
-        <div class="modal-botoes-container">
-            <button onclick="compartilharWhatsApp()" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Compartilhar
-            </button>
-            <button onclick="fecharModal()" class="btn-fechar-modal">Fechar</button>
+        <button id="btn-tema" onclick="alternarTema()">
+            <i class="fas fa-moon"></i> Modo Escuro
+        </button>
+    </header>
+
+    <section id="tela-home" class="tela">
+        <div class="como-funciona">
+            <h2>Bem-vindo ao Super Sorteador! 🚀</h2>
+            <p>Esqueça os papeizinhos. Aqui você pode realizar sorteios justos, rápidos e com uma interface premium.</p>
+            <p>Escolha uma das ferramentas no menu superior para começar.</p>
+        </div>
+    </section>
+
+    <section id="tela-app" class="tela oculta">
+        <main class="container">
+            <h1 id="titulo-ferramenta">Sorteador</h1>
+
+            <div class="grupo-adicionar">
+                <input type="text" id="nome-amigo" placeholder="Digite o nome de um amigo">
+                <button onclick="adicionar()">Adicionar</button>
+            </div>
+            <button id="btn-gerar" onclick="gerarNomes()">+ Gerar Nomes Aleatórios</button>
+            <ul id="lista-amigos"></ul>
+            <button id="btn-limpar" onclick="novoSorteio()">Limpar Lista</button>
+
+            <div id="aba-sorteador" class="conteudo-aba oculta">
+                <button id="btn-sortear" onclick="sortear()">Sortear Nome</button>
+                
+                <div class="grupo-historico">
+                    <h2 class="titulo-historico"><i class="fa-solid fa-trophy"></i> Hall da Fama</h2>
+                    <ul id="lista-historico"></ul>
+                    <button onclick="limparHistorico()">Zerar Histórico</button>
+                </div>
+            </div>
+
+            <div id="aba-amigo-secreto" class="conteudo-aba oculta">
+                <button id="btn-amigo-secreto" onclick="sortearAmigoSecreto()">Gerar Amigo Secreto</button>
+            </div>
+
+            <div id="aba-equipes" class="conteudo-aba oculta">
+                <button>Em Breve: Divisão de Equipes!</button>
+            </div>
+
+        </main>
+    </section>
+
+    <footer class="rodape">
+        <p>Desenvolvido por Yago.</p>
+        <p>&copy; 2026 - Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modal-sorteio" class="modal-oculta">
+        <div class="modal-cartao">
+            <h2 id="titulo-modal"><i class="fas fa-trophy"></i> O Vencedor é <i class="fas fa-trophy"></i></h2>
+            
+            <div id="texto-vencedor"></div>
+
+            <div class="modal-botoes-container">
+                <button onclick="compartilharWhatsApp()" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Compartilhar
+                </button>
+                <button onclick="fecharModal()" class="btn-fechar-modal">Fechar</button>
+            </div>
         </div>
     </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
     <script src="app.js"></script>
 </body>
 </html>

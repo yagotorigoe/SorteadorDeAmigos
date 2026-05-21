@@ -219,3 +219,28 @@ function sortearAmigoSecreto() {
     let modal = document.getElementById('modal-sorteio');
     modal.className = 'modal-visivel';
 }
+
+// --- SISTEMA DE NAVEGAÇÃO E ABAS ---
+function mudarAba(aba) {
+    document.querySelectorAll('.menu-superior button').forEach(btn => btn.classList.remove('ativo'));
+    document.getElementById('nav-' + aba).classList.add('ativo');
+
+    if (aba === 'home') {
+        document.getElementById('tela-home').classList.remove('oculta');
+        document.getElementById('tela-app').classList.add('oculta');
+    } else {
+        document.getElementById('tela-home').classList.add('oculta');
+        document.getElementById('tela-app').classList.remove('oculta');
+
+        document.querySelectorAll('.conteudo-aba').forEach(div => div.classList.add('oculta'));
+        
+        document.getElementById('aba-' + aba).classList.remove('oculta');
+
+        let titulos = {
+            'sorteador': 'Sorteador de Nomes',
+            'amigo-secreto': 'Amigo Secreto',
+            'equipes': 'Gerador de Equipes'
+        };
+        document.getElementById('titulo-ferramenta').innerText = titulos[aba];
+    }
+}

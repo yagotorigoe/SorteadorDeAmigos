@@ -1,5 +1,5 @@
 /* =========================================
-   1. RESET E CONFIGURAÇÕES GERAIS
+   1. RESET, TRANSIÇÕES E ESTRUTURA GLOBAL
    ========================================= */
 body {
     background-color: hsl(240, 10%, 92%);
@@ -7,11 +7,68 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Permite rolar para baixo */
     min-height: 100vh;
     margin: 0;
 }
 
+.transicao-suave {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* =========================================
+   2. CABEÇALHO, SEÇÕES E RODAPÉ
+   ========================================= */
+.cabecalho {
+    width: 100%;
+    background-color: white;
+    padding: 15px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6c63ff;
+    justify-self: start;
+}
+
+.como-funciona {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.como-funciona p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.rodape {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    box-sizing: border-box;
+}
+
+.rodape p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* =========================================
+   3. APLICATIVO CENTRAL (CONTAINER PRINCIPAL)
+   ========================================= */
 .container {
     display: flex;
     flex-direction: column;
@@ -20,6 +77,7 @@ body {
     max-width: 800px;
     padding: 20px;
     box-sizing: border-box;
+    flex: 1; /* Faz o container esticar se a tela for muito grande */
 }
 
 h1 {
@@ -37,7 +95,7 @@ h2 {
 }
 
 /* =========================================
-   2. INPUTS E ADIÇÃO DE AMIGOS
+   4. INPUTS E ADIÇÃO DE AMIGOS
    ========================================= */
 .grupo-adicionar {
     display: flex;
@@ -62,19 +120,8 @@ input:focus {
     border-color: #6c63ff;
 }
 
-#btn-gerar {
-    background-color: #20c997;
-    color: white;
-    margin-bottom: 20px;
-    width: 300px;
-}
-
-#btn-gerar:hover {
-    background-color: #12b886;
-}
-
 /* =========================================
-   3. LISTAS (AMIGOS E HISTÓRICO)
+   5. LISTAS E HISTÓRICO
    ========================================= */
 ul {
     list-style: none;
@@ -95,6 +142,18 @@ li {
     align-items: center; 
     font-size: 1.1rem;
     color: #444;
+    animation: entradaSuave 0.4s ease-out; /* Animação ao adicionar */
+}
+
+@keyframes entradaSuave {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .grupo-historico {
@@ -111,7 +170,7 @@ li {
 }
 
 /* =========================================
-   4. BOTÕES GERAIS E AÇÕES
+   6. BOTÕES GERAIS E AÇÕES
    ========================================= */
 button {
     background-color: #6c63ff;
@@ -137,6 +196,11 @@ button:hover {
     background-color: #5750d1;
 }
 
+/* Efeito de "apertar" o botão ao clicar */
+button:active {
+    transform: scale(0.95);
+}
+
 .grupo-botoes {
     display: flex;
     justify-content: center;
@@ -145,6 +209,13 @@ button:hover {
     width: 100%;
 }
 
+#btn-gerar {
+    background-color: #20c997;
+    margin-bottom: 20px;
+    width: 300px;
+}
+#btn-gerar:hover { background-color: #12b886; }
+
 .btn-remover {
     background-color: #ff4d4d;
     padding: 5px 10px;
@@ -152,36 +223,56 @@ button:hover {
     box-shadow: none;
 }
 
-.btn-remover:hover {
-    background-color: #cc0000;
+#btn-sortear, #btn-amigo-secreto {
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
-#btn-limpar {
-    background-color: #e68080;
+#btn-sortear {
+    background-color: #2c66d3; 
 }
 
-#btn-limpar:hover {
-    background-color: #fa5252;
+#btn-sortear:hover {
+    background-color: #2663b3;
 }
 
 #btn-amigo-secreto {
-    background-color: #ff9f43;
+    background-color: #ff9f43; 
 }
 
 #btn-amigo-secreto:hover {
     background-color: #e68a00;
 }
 
+
+#btn-limpar { 
+    background-color: #e21111; 
+    margin-bottom: 20px;
+}
+#btn-limpar:hover { 
+    background-color: #961a1a; 
+}
+
+.btn-whatsapp {
+    background-color: #25D366 !important;
+    color: white !important;
+}
+.btn-whatsapp:hover { 
+    background-color: #128c7e !important; 
+}
+
 /* =========================================
-   5. MODO ESCURO
+   7. MODO ESCURO
    ========================================= */
 #btn-tema {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: static;
+    margin: 0;
     padding: 8px 15px;
     background-color: #333;
     font-size: 1rem;
+    justify-self: end; position: static; margin: 0;
 }
 
 body.tema-escuro {
@@ -189,9 +280,17 @@ body.tema-escuro {
     color: #f1f1f1;
 }
 
+body.tema-escuro .cabecalho {
+    background-color: #222;
+    border-bottom: 1px solid #444;
+}
+
+body.tema-escuro .como-funciona p {
+    color: #aaa;
+}
+
 body.tema-escuro li,
-body.tema-escuro input,
-body.tema-escuro .modal-cartao {
+body.tema-escuro input {
     background-color: #333;
     color: #f1f1f1;
     border: 1px solid #555;
@@ -201,9 +300,23 @@ body.tema-escuro h1 {
     color: #f1f1f1;
 }
 
+/* Modal no Modo Escuro */
+body.tema-escuro .modal-cartao {
+    background-color: rgba(45, 45, 45, 0.95) !important;
+}
+
 /* =========================================
-   6. MODAL (SORTEIO E AMIGO SECRETO)
+   8. MODAL (EFEITOS E FUNCIONAMENTO)
    ========================================= */
+/* Desfoca o fundo quando a modal estiver visível */
+body:has(.modal-visivel) .container,
+body:has(.modal-visivel) .cabecalho,
+body:has(.modal-visivel) .como-funciona,
+body:has(.modal-visivel) .rodape {
+    filter: blur(8px);
+    transition: filter 0.3s ease;
+}
+
 .modal-oculta {
     display: none !important;
 }
@@ -222,7 +335,9 @@ body.tema-escuro h1 {
 }
 
 .modal-cartao {
-    background-color: white;
+    -webkit-backdrop-filter: blur(10px); /* Efeito de vidro - Apple */
+    backdrop-filter: blur(10px);         /* Efeito de vidro - Padrão */
+    background-color: rgba(255, 255, 255, 0.95) !important;
     padding: 30px !important;
     border-radius: 15px;
     text-align: center;
@@ -231,6 +346,11 @@ body.tema-escuro h1 {
     width: 90% !important;
     max-width: 600px !important;
     box-sizing: border-box;
+}
+
+@keyframes pularNaTela {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 #texto-vencedor {
@@ -253,7 +373,7 @@ body.tema-escuro h1 {
     width: 100% !important;
 }
 
-/* PROTEGE O TEXTO DO AMIGO SECRETO PARA NÃO FICAR GIGANTE */
+/* Protege o texto do Amigo Secreto */
 .lista-amigo-secreto p {
     font-size: 1.2rem !important;
     color: inherit !important;
@@ -262,49 +382,62 @@ body.tema-escuro h1 {
     margin: 10px 0 !important;
 }
 
-.btn-whatsapp {
-    background-color: #25D366 !important;
-    color: white !important;
+/* =========================================
+   9. NAVEGAÇÃO E SISTEMA DE TELAS (SPA)
+   ========================================= */
+.menu-superior {
+    display: flex;
+    gap: 10px;
+    justify-self: center; display: flex; gap: 10px;
 }
 
-.btn-whatsapp:hover {
-    background-color: #128c7e !important;
+.menu-superior button {
+    background: none;
+    color: #555;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: none;
+    padding: 10px 20px;
+    border-radius: 8px;
 }
 
-button:active {
-    transform: scale(0.95);
+.menu-superior button:hover { 
+    background-color: #e2e2e2; color: #6c63ff; 
 }
 
-li {
+.menu-superior button.ativo { 
+    background-color: #6c63ff; color: white;
+}
+
+.tela {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     animation: entradaSuave 0.4s ease-out;
 }
 
-@keyframes entradaSuave {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.tela.oculta, .conteudo-aba.oculta { 
+    display: none !important; 
 }
 
-body:has(.modal-visivel) .container {
-    filter: blur(8px);
-    transition: filter 0.3s ease;
+.conteudo-aba {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: entradaSuave 0.3s ease-out;
 }
 
-.modal-cartao {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95) !important;
+.btn-comecar {
+    background-color: #20c997;
+    margin-top: 20px;
+}
+.btn-comecar:hover {
+    background-color: #12b886;
 }
 
-body.tema-escuro .modal-cartao {
-    background-color: rgba(45, 45, 45, 0.95) !important;
-}
-
-.transicao-suave {
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
+/* Cores do Menu no Modo Escuro */
+body.tema-escuro .menu-superior button { color: #ccc; }
+body.tema-escuro .menu-superior button:hover { background-color: #333; color: #6c63ff; }
+body.tema-escuro .menu-superior button.ativo { background-color: #6c63ff; color: white; }
