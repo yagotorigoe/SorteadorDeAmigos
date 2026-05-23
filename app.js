@@ -244,3 +244,51 @@ function mudarAba(aba) {
         document.getElementById('titulo-ferramenta').innerText = titulos[aba];
     }
 }
+
+function gerarEquipes() {
+    let qtdEquipesInput = document.getElementById('qtd-equipes').value;
+    let qtdEquipes = parseInt(qtdEquipesInput);
+
+    if (amigos.length < 2) {
+        alert("Adicione pelo menos 2 pessoas na lista para formar equipes.");
+        return;
+    }
+    if (isNaN(qtdEquipes) || qtdEquipes < 2) {
+        alert("Por favor, digite um número válido de equipes (mínimo 2).");
+        return;
+    }
+    if (qtdEquipes > amigos.length) {
+        alert("Erro: Você não pode ter mais equipes do que pessoas!");
+        return;
+    }
+
+    let amigosMisturados = [...amigos];
+    for (let i = amigosMisturados.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [amigosMisturados[i], amigosMisturados[j]] = [amigosMisturados[j], amigosMisturados[i]];
+    }
+
+    let equipes = [];
+    for (let i = 0; i < qtdEquipes; i++) {
+        equipes.push([]);
+    }
+
+    for (let i = 0; i < amigosMisturados.length; i++) {
+        let numeroDaEquipe = i % qtdEquipes; 
+        equipes[numeroDaEquipe].push(amigosMisturados[i]);
+    }
+
+    let resultadoHTML = "";
+    for (let i = 0; i < equipes.length; i++) {
+        resultadoHTML += `<div class="cartao-equipe" style="background-color: white; color: #333; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); width: 100%;">`;
+        resultadoHTML += `<h3 style="margin-top: 0; color: #e84393; border-bottom: 2px solid #eee; padding-bottom: 10px;">🛡️ Equipe ${i + 1}</h3>`;
+        
+        resultadoHTML += `<ul style="list-style: none; padding: 0; margin: 0; width: 100%;">`;
+        for (let j = 0; j < equipes[i].length; j++) {
+            resultadoHTML += `<li style="padding: 5px 0; margin: 0; box-shadow: none; border-radius: 0; background: transparent;">👤 ${equipes[i][j]}</li>`;
+        }
+        resultadoHTML += `</ul></div>`;
+    }
+
+    document.getElementById('resultado-equipes').innerHTML = resultadoHTML;
+}

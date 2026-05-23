@@ -231,7 +231,7 @@ button:active {
 }
 
 #btn-sortear {
-    background-color: #2c66d3; 
+    background-color: #467bdd; 
 }
 
 #btn-sortear:hover {
@@ -248,11 +248,11 @@ button:active {
 
 
 #btn-limpar { 
-    background-color: #e21111; 
+    background-color: #eb4848; 
     margin-bottom: 20px;
 }
 #btn-limpar:hover { 
-    background-color: #961a1a; 
+    background-color: #ac3030; 
 }
 
 .btn-whatsapp {
