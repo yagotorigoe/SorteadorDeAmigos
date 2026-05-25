@@ -211,8 +211,9 @@ button:active {
 
 #btn-gerar {
     background-color: #20c997;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     width: 300px;
+    margin-top: 10px;
 }
 #btn-gerar:hover { background-color: #12b886; }
 

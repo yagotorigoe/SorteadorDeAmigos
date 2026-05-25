@@ -126,12 +126,12 @@ function limparHistorico() {
     atualizarHistorico();
 }
 
-let campoTexto = document.getElementById("nome-amigo");
-campoTexto.addEventListener("keypress", function(evento) {
-    if (evento.key === "Enter") {
-        adicionar();
-    }
-});
+//let campoTexto = document.getElementById("nome-amigo");
+//campoTexto.addEventListener("keypress", function(evento) {
+//    if (evento.key === "Enter") {
+//        adicionar();
+//   }
+// });
 
 function fecharModal() {
     let modal = document.getElementById("modal-sorteio");
@@ -245,10 +245,13 @@ function mudarAba(aba) {
     }
 }
 
+let textoCompartilharEquipes = "";
+
 function gerarEquipes() {
     let qtdEquipesInput = document.getElementById('qtd-equipes').value;
     let qtdEquipes = parseInt(qtdEquipesInput);
 
+    // 1. Regras de Segurança (Validações)
     if (amigos.length < 2) {
         alert("Adicione pelo menos 2 pessoas na lista para formar equipes.");
         return;
@@ -262,33 +265,65 @@ function gerarEquipes() {
         return;
     }
 
+    // 2. A Fotocópia e o Embaralhamento (Algoritmo Fisher-Yates)
     let amigosMisturados = [...amigos];
     for (let i = amigosMisturados.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [amigosMisturados[i], amigosMisturados[j]] = [amigosMisturados[j], amigosMisturados[i]];
     }
 
+    // 3. Criando as "Caixas" das equipes vazias
     let equipes = [];
     for (let i = 0; i < qtdEquipes; i++) {
         equipes.push([]);
     }
 
+    // 4. Distribuindo as pessoas
     for (let i = 0; i < amigosMisturados.length; i++) {
         let numeroDaEquipe = i % qtdEquipes; 
         equipes[numeroDaEquipe].push(amigosMisturados[i]);
     }
 
+    textoCompartilharEquipes = "🛡️ *EQUIPES SORTEADAS!* 🛡️\n\n";
+
+    // 5. Desenhando o resultado na tela (HTML dinâmico)
     let resultadoHTML = "";
     for (let i = 0; i < equipes.length; i++) {
+        // Alimenta o texto do WhatsApp
+        textoCompartilharEquipes += `*Equipe ${i + 1}:*\n`;
+
         resultadoHTML += `<div class="cartao-equipe" style="background-color: white; color: #333; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); width: 100%;">`;
         resultadoHTML += `<h3 style="margin-top: 0; color: #e84393; border-bottom: 2px solid #eee; padding-bottom: 10px;">🛡️ Equipe ${i + 1}</h3>`;
         
         resultadoHTML += `<ul style="list-style: none; padding: 0; margin: 0; width: 100%;">`;
         for (let j = 0; j < equipes[i].length; j++) {
             resultadoHTML += `<li style="padding: 5px 0; margin: 0; box-shadow: none; border-radius: 0; background: transparent;">👤 ${equipes[i][j]}</li>`;
+            
+            // Adiciona o integrante no texto do WhatsApp
+            textoCompartilharEquipes += `👤 ${equipes[i][j]}\n`;
         }
         resultadoHTML += `</ul></div>`;
+        
+        // Pula uma linha no texto do WhatsApp entre uma equipe e outra
+        textoCompartilharEquipes += "\n";
     }
 
+    // Adiciona o botão de compartilhar lindo e verdinho no final de todos os cartões
+    resultadoHTML += `
+        <button onclick="compartilharEquipesWhatsApp()" class="btn-whatsapp" style="width: 300px; margin: 20px auto 0 auto;">
+            <i class="fab fa-whatsapp"></i> Compartilhar no Zap
+        </button>
+    `;
+
+    // 6. Injetando tudo na nossa bandeja
     document.getElementById('resultado-equipes').innerHTML = resultadoHTML;
+}
+
+// NOVA FUNÇÃO: Dispara o link do WhatsApp
+function compartilharEquipesWhatsApp() {
+    if (!textoCompartilharEquipes) return;
+    
+    // encodeURIComponent serve para converter espaços e emojis em um link que o navegador entenda
+    let url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(textoCompartilharEquipes);
+    window.open(url, "_blank");
 }
