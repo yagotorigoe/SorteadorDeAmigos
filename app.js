@@ -126,12 +126,15 @@ function limparHistorico() {
     atualizarHistorico();
 }
 
-//let campoTexto = document.getElementById("nome-amigo");
-//campoTexto.addEventListener("keypress", function(evento) {
-//    if (evento.key === "Enter") {
-//        adicionar();
-//   }
-// });
+document.addEventListener('keypress', function(evento) {
+    if (evento.key === 'Enter') {
+        let campoNomes = document.getElementById("nome-amigo");
+        
+        if (campoNomes === document.activeElement) {
+            adicionar();
+        }
+    }
+});
 
 function fecharModal() {
     let modal = document.getElementById("modal-sorteio");
