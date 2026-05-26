@@ -18,6 +18,9 @@ function adicionar() {
     let input = document.getElementById("nome-amigo");
     let nome = input.value.trim();
 
+    // --- ANTI-HACKER ---
+    nome = nome.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
     if (nome.length === 0) {
         alert("Por favor, digite um nome válido!");
         input.value = "";

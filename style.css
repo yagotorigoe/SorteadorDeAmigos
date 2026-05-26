@@ -209,6 +209,13 @@ button:active {
     width: 100%;
 }
 
+.btn-principal {
+    background-color: #4a69bd; 
+}
+.btn-principal:hover {
+    background-color: #3b55a0;
+}
+
 #btn-gerar {
     background-color: #20c997;
     margin-bottom: 40px;
@@ -247,7 +254,6 @@ button:active {
     background-color: #e68a00;
 }
 
-
 #btn-limpar { 
     background-color: #eb4848; 
     margin-bottom: 20px;
@@ -273,7 +279,7 @@ button:active {
     padding: 8px 15px;
     background-color: #333;
     font-size: 1rem;
-    justify-self: end; position: static; margin: 0;
+    justify-self: end;
 }
 
 body.tema-escuro {
@@ -304,6 +310,15 @@ body.tema-escuro h1 {
 /* Modal no Modo Escuro */
 body.tema-escuro .modal-cartao {
     background-color: rgba(45, 45, 45, 0.95) !important;
+}
+
+body.tema-escuro .cartao-equipe {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+body.tema-escuro .cartao-equipe h3 {
+    border-bottom-color: #444;
 }
 
 /* =========================================
@@ -389,7 +404,7 @@ body:has(.modal-visivel) .rodape {
 .menu-superior {
     display: flex;
     gap: 10px;
-    justify-self: center; display: flex; gap: 10px;
+    justify-self: center;
 }
 
 .menu-superior button {
@@ -442,3 +457,62 @@ body:has(.modal-visivel) .rodape {
 body.tema-escuro .menu-superior button { color: #ccc; }
 body.tema-escuro .menu-superior button:hover { background-color: #333; color: #6c63ff; }
 body.tema-escuro .menu-superior button.ativo { background-color: #6c63ff; color: white; }
+
+/* =========================================
+   10. FERRAMENTA DE EQUIPES
+   ========================================= */
+#qtd-equipes {
+    width: 150px;
+}
+
+#btn-gerar-equipes {
+    background-color: #e84393;
+    width: 250px;
+}
+#btn-gerar-equipes:hover {
+    background-color: #c9337b;
+}
+
+#resultado-equipes {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cartao-equipe {
+    background-color: white;
+    color: #333;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cartao-equipe h3 {
+    margin-top: 0;
+    color: #e84393;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cartao-equipe ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.cartao-equipe li {
+    padding: 5px 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+    display: block; /* Remove o display flex que estava bagunçando o texto */
+}
+
+.btn-compartilhar-equipes {
+    width: 300px;
+    margin: 20px auto 0 auto;
+}

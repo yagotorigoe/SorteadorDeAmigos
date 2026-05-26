@@ -9,7 +9,7 @@
 </head>
 <body class="transicao-suave">
 
-<header class="cabecalho">
+    <header class="cabecalho">
         <div class="logo">🎉 Super Sorteador</div>
         
         <nav class="menu-superior">
@@ -36,15 +36,11 @@
         <main class="container">
             <h1 id="titulo-ferramenta">Sorteador</h1>
 
-                <div id="aba-equipes" class="conteudo-aba oculta">
-                <div class="grupo-adicionar">
-                    <input type="number" id="qtd-equipes" placeholder="Nº de equipes" min="2" style="width: 150px;">
-                    <button id="btn-gerar-equipes" onclick="gerarEquipes()" style="background-color: #e84393; width: 250px;">
-                        Dividir Equipes
-                    </button>
-                </div>
-                
-                <div id="resultado-equipes" style="width: 100%; margin-top: 20px;"></div>
+            <div class="grupo-adicionar">
+                <input type="text" id="nome-amigo" placeholder="Digite um nome...">
+                <button onclick="adicionar()">
+                    Adicionar
+                </button>
             </div>
             
             <button id="btn-gerar" onclick="gerarNomes()">+ Gerar Nomes Aleatórios</button>
@@ -66,7 +62,14 @@
             </div>
 
             <div id="aba-equipes" class="conteudo-aba oculta">
-                <button>Em Breve: Divisão de Equipes!</button>
+                <div class="grupo-adicionar">
+                    <input type="number" id="qtd-equipes" placeholder="Nº de equipes" min="2">
+                    <button id="btn-gerar-equipes" onclick="gerarEquipes()">
+                        Dividir Equipes
+                    </button>
+                </div>
+                
+                <div id="resultado-equipes"></div>
             </div>
 
         </main>
