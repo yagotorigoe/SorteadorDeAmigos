@@ -509,10 +509,70 @@ body.tema-escuro .menu-superior button.ativo { background-color: #6c63ff; color:
     box-shadow: none;
     border-radius: 0;
     background: transparent;
-    display: block; /* Remove o display flex que estava bagunçando o texto */
+    display: block;
 }
 
 .btn-compartilhar-equipes {
     width: 300px;
     margin: 20px auto 0 auto;
 }
+
+/* =========================================
+   11. RESPONSIVIDADE (CELULARES E TABLETS)
+   ========================================= */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .logo {
+        justify-self: center;
+    }
+
+    .menu-superior {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #btn-tema {
+        justify-self: center;
+    }
+
+    .grupo-adicionar {
+        flex-direction: column; /* Coloca o input em cima e o botão embaixo */
+        align-items: center;
+    }
+
+    input, #qtd-equipes {
+        width: 100%; /* Faz o input ocupar toda a tela do celular */
+        max-width: 300px;
+    }
+
+    button {
+        width: 100%; /* Faz os botões ocuparem mais espaço para facilitar o clique com o dedo */
+        max-width: 300px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    #texto-vencedor {
+        font-size: 2.5rem !important;
+    }
+}
+
+    .btn-remover {
+        width: auto !important;
+        padding: 5px 12px !important;
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+
+    li {
+        flex-wrap: nowrap;
+    }
