@@ -15,31 +15,48 @@ function salvarDados() {
 }
 
 function adicionar() {
-    let input = document.getElementById("nome-amigo");
-    let nome = input.value.trim();
+    let campoInput = document.getElementById('nome-amigo');
+    let texto = campoInput.value.trim();
 
-    // --- ANTI-HACKER ---
-    nome = nome.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-    if (nome.length === 0) {
-        alert("Por favor, digite um nome válido!");
-        input.value = "";
+    if (texto === '') {
+        alert('Por favor, digite um nome válido.');
         return;
     }
 
-    let nomeMaiusculo = nome.toUpperCase();
-    let listaMaiuscula = amigos.map(amigo => amigo.toUpperCase());
+    texto = texto.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    if (listaMaiuscula.includes(nomeMaiusculo)) {
-        alert("Este nome já foi adicionado!");
-        return; 
+    let listaDeNomes = texto.split(',');
+
+    for (let i = 0; i < listaDeNomes.length; i++) {
+        let nomeLimpo = listaDeNomes[i].trim();
+        
+        if (nomeLimpo !== '') {
+            // Bloqueia nomes clonados
+            if (amigos.includes(nomeLimpo)) {
+                alert(`O nome "${nomeLimpo}" já está na lista e foi ignorado.`);
+            } else {
+                amigos.push(nomeLimpo);
+            }
+        }
     }
 
-    amigos.push(nome);
-    input.value = ""; 
+    campoInput.value = '';
     
-    salvarDados();
     atualizarLista(); 
+    atualizarContador(); 
+}
+
+function atualizarContador() {
+    let contador = document.getElementById('contador-amigos');
+    if (!contador) return;
+
+    if (amigos.length === 0) {
+        contador.innerText = "Nenhum participante na lista";
+    } else if (amigos.length === 1) {
+        contador.innerText = "1 participante na lista";
+    } else {
+        contador.innerText = `${amigos.length} participantes na lista`;
+    }
 }
 
 function atualizarLista() {
@@ -62,6 +79,7 @@ function removerAmigo(index) {
     amigos.splice(index, 1);
     salvarDados();
     atualizarLista();
+    atualizarContador();
 }
 
 function sortear() {
@@ -109,6 +127,7 @@ function novoSorteio() {
     amigos = [];
     salvarDados();
     atualizarLista();
+    atualizarContador();
     document.getElementById("nome-amigo").focus();
 }
 
@@ -185,6 +204,7 @@ async function gerarNomes() {
 
         salvarDados();
         atualizarLista();
+        atualizarContador();
         
         botao.innerHTML = "+ Gerar Nomes Aleatórios";
 

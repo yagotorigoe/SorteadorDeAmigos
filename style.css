@@ -576,3 +576,12 @@ body.tema-escuro .menu-superior button.ativo { background-color: #6c63ff; color:
     li {
         flex-wrap: nowrap;
     }
+
+    /* Estilo do Contador de Participantes */
+.contador {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+}
