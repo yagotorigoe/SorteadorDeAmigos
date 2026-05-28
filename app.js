@@ -4,6 +4,12 @@ let historico = JSON.parse(localStorage.getItem("meusCampeoes")) || [];
 let somTambores = new Audio("https://www.myinstants.com/media/sounds/drum-roll.mp3");
 let somVitoria = new Audio("https://www.myinstants.com/media/sounds/kids_cheering.mp3");
 
+let temaSalvo = localStorage.getItem("meuTema");
+if (temaSalvo === "escuro") {
+    document.body.classList.add("tema-escuro");
+    document.getElementById("btn-tema").innerHTML = '<i class="fas fa-sun"></i> Modo Claro';
+}
+
 somTambores.volume = 0.095;
 somVitoria.volume = 0.1;
 
@@ -171,15 +177,17 @@ function compartilharWhatsApp() {
     window.open(linkZap, '_blank');
 }
 
+// --- FUNÇÃO DE TEMA INTELIGENTE (SALVA NA MEMÓRIA) ---
 function alternarTema() {
     document.body.classList.toggle("tema-escuro");
-
-    let botao = document.getElementById("btn-tema")
+    let botao = document.getElementById("btn-tema");
 
     if (document.body.classList.contains("tema-escuro")) {
         botao.innerHTML = '<i class="fas fa-sun"></i> Modo Claro';
+        localStorage.setItem("meuTema", "escuro"); // Salva que o usuário gosta do escuro
     } else {
         botao.innerHTML = '<i class="fas fa-moon"></i> Modo Escuro';
+        localStorage.setItem("meuTema", "claro"); // Salva que o usuário gosta do claro
     }
 }
    
@@ -352,4 +360,31 @@ function compartilharEquipesWhatsApp() {
     // encodeURIComponent serve para converter espaços e emojis em um link que o navegador entenda
     let url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(textoCompartilharEquipes);
     window.open(url, "_blank");
+}
+
+// --- FUNÇÃO PARA EXPORTAR NOMES PARA ARQUIVO .TXT ---
+function exportarParaTXT() {
+    // Verifica se a lista global de amigos tem alguém
+    if (amigos.length === 0) {
+        alert("Adicione pelo menos um nome na lista antes de exportar!");
+        return;
+    }
+
+    // Une todos os nomes que estão na memória pulando uma linha (\n)
+    let conteudoTXT = "=== LISTA DE PARTICIPANTES ===\n\n" + amigos.join("\n");
+
+    // Cria um objeto "Blob" (um arquivo simulado na memória do navegador)
+    let blob = new Blob([conteudoTXT], { type: "text/plain;charset=utf-8" });
+    
+    // Cria um link invisível de download do HTML
+    let linkElemento = document.createElement("a");
+    linkElemento.href = URL.createObjectURL(blob);
+    linkElemento.download = "lista-participantes.txt"; // Nome do arquivo que vai baixar
+
+    // Força o navegador a clicar no link invisível e iniciar o download
+    document.body.appendChild(linkElemento);
+    linkElemento.click();
+    
+    // Remove o link lixo da memória
+    document.body.removeChild(linkElemento);
 }

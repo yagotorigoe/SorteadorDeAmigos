@@ -465,6 +465,11 @@ body.tema-escuro .menu-superior button.ativo { background-color: #6c63ff; color:
     width: 150px;
 }
 
+#btn-exportar {
+    background-color: #4b6584;
+    margin-bottom: 10px;
+}
+
 #btn-gerar-equipes {
     background-color: #e84393;
     width: 250px;
